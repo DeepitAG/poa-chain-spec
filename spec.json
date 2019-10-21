@@ -1,5 +1,5 @@
 {
-  "name": "DaiChain",
+  "name": "Pchain",
   "engine": {
     "authorityRound": {
       "params": {
@@ -7,18 +7,20 @@
         "blockReward": "0x0",
         "maximumUncleCountTransition": 0,
         "maximumUncleCount": 0,
+        "blockRewardContractAddress": "0xd7fce59f53f03b0c31b391531a0a7f8c54ff5aea",
+        "blockRewardContractTransition": 21000,
         "validators": {
           "multi": {
             "0": {
-              "list": ["0xcace5b3c29211740e595850e80478416ee77ca21"]
+              "list": [
+                "0x06e067acbf9ab46d9da634f96ebbbb8f8242a181"
+              ]
             },
-            "1300": {
-              "safeContract": "0x22e1229a2c5b95a60983b5577f745a603284f535"
+            "21000": {
+              "safeContract": "0xf6567351ea12cc99cd7a9ea83e22ea986d475552"
             }
           }
-        },
-        "blockRewardContractAddress": "0x867305d19606aadba405ce534e303d0e225f9556",
-        "blockRewardContractTransition": 1310
+        }
       }
     }
   },
@@ -26,17 +28,15 @@
     "gasLimitBoundDivisor": "0x400",
     "maximumExtraDataSize": "0x20",
     "minGasLimit": "0x1388",
-    "networkID": "100",
+    "networkID": "191",
     "eip140Transition": "0x0",
     "eip211Transition": "0x0",
     "eip214Transition": "0x0",
     "eip658Transition": "0x0",
-    "eip145Transition": 1604400,
-    "eip1014Transition": 1604400,
-    "eip1052Transition": 1604400,
-    "eip1283Transition": 1604400,
-    "eip1283DisableTransition": 2508800,
-    "registrar": "0x1ec97dc137f5168af053c24460a1200502e1a9d2"
+    "eip145Transition": 24000,
+    "eip1014Transition": 24000,
+    "eip1052Transition": 24000,
+    "registrar": "0x17016a96b573102a3cb272f13e1e47f83698fe36"
   },
   "genesis": {
     "seal": {
