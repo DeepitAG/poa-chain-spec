@@ -1,58 +1,16 @@
 [
   {
     "constant": true,
-    "inputs": [
-      {
-        "name": "_message",
-        "type": "bytes32"
-      }
-    ],
-    "name": "numMessagesSigned",
+    "inputs": [],
+    "name": "erc677token",
     "outputs": [
       {
         "name": "",
-        "type": "uint256"
+        "type": "address"
       }
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "_hash",
-        "type": "bytes32"
-      },
-      {
-        "name": "_index",
-        "type": "uint256"
-      }
-    ],
-    "name": "signature",
-    "outputs": [
-      {
-        "name": "",
-        "type": "bytes"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_fee",
-        "type": "uint256"
-      }
-    ],
-    "name": "setForeignFee",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -63,7 +21,7 @@
         "type": "bytes32"
       }
     ],
-    "name": "fixedAssets",
+    "name": "relayedMessages",
     "outputs": [
       {
         "name": "",
@@ -72,6 +30,32 @@
     ],
     "payable": false,
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "vs",
+        "type": "uint8[]"
+      },
+      {
+        "name": "rs",
+        "type": "bytes32[]"
+      },
+      {
+        "name": "ss",
+        "type": "bytes32[]"
+      },
+      {
+        "name": "message",
+        "type": "bytes"
+      }
+    ],
+    "name": "executeSignatures",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -91,20 +75,6 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_fee",
-        "type": "uint256"
-      }
-    ],
-    "name": "setHomeFee",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -166,11 +136,11 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "requiredMessageLength",
+    "name": "getBridgeMode",
     "outputs": [
       {
-        "name": "",
-        "type": "uint256"
+        "name": "_data",
+        "type": "bytes4"
       }
     ],
     "payable": false,
@@ -195,25 +165,6 @@
     "constant": true,
     "inputs": [
       {
-        "name": "_hash",
-        "type": "bytes32"
-      }
-    ],
-    "name": "message",
-    "outputs": [
-      {
-        "name": "",
-        "type": "bytes"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
         "name": "_day",
         "type": "uint256"
       }
@@ -227,38 +178,6 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_feeManager",
-        "type": "address"
-      }
-    ],
-    "name": "setFeeManagerContract",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "signature",
-        "type": "bytes"
-      },
-      {
-        "name": "message",
-        "type": "bytes"
-      }
-    ],
-    "name": "submitSignature",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -291,44 +210,6 @@
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "_withdrawal",
-        "type": "bytes32"
-      }
-    ],
-    "name": "numAffirmationsSigned",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "_withdrawal",
-        "type": "bytes32"
-      }
-    ],
-    "name": "affirmationsSigned",
-    "outputs": [
-      {
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -394,58 +275,6 @@
   },
   {
     "constant": true,
-    "inputs": [
-      {
-        "name": "_message",
-        "type": "bytes32"
-      }
-    ],
-    "name": "messagesSigned",
-    "outputs": [
-      {
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "_value",
-        "type": "uint256"
-      }
-    ],
-    "name": "getAmountToBurn",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "getHomeFee",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
     "inputs": [],
     "name": "validatorContract",
     "outputs": [
@@ -456,28 +285,6 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "recipient",
-        "type": "address"
-      },
-      {
-        "name": "value",
-        "type": "uint256"
-      },
-      {
-        "name": "transactionHash",
-        "type": "bytes32"
-      }
-    ],
-    "name": "executeAffirmation",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -517,20 +324,6 @@
     "type": "function"
   },
   {
-    "constant": true,
-    "inputs": [],
-    "name": "outOfLimitAmount",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "constant": false,
     "inputs": [
       {
@@ -548,20 +341,25 @@
     "constant": false,
     "inputs": [
       {
-        "name": "txHash",
-        "type": "bytes32"
+        "name": "_from",
+        "type": "address"
       },
       {
-        "name": "unlockOnForeign",
-        "type": "bool"
-      },
-      {
-        "name": "valueToUnlock",
+        "name": "_value",
         "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "bytes"
       }
     ],
-    "name": "fixAssetsAboveLimits",
-    "outputs": [],
+    "name": "onTokenTransfer",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
@@ -639,20 +437,6 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "feeManagerContract",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
     "name": "minPerTx",
     "outputs": [
       {
@@ -698,20 +482,6 @@
     "type": "function"
   },
   {
-    "constant": true,
-    "inputs": [],
-    "name": "getFeeManagerMode",
-    "outputs": [
-      {
-        "name": "",
-        "type": "bytes4"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "constant": false,
     "inputs": [
       {
@@ -754,44 +524,6 @@
     "type": "function"
   },
   {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "_number",
-        "type": "uint256"
-      }
-    ],
-    "name": "isAlreadyProcessed",
-    "outputs": [
-      {
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "getForeignFee",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "payable": true,
-    "stateMutability": "payable",
-    "type": "fallback"
-  },
-  {
     "anonymous": false,
     "inputs": [
       {
@@ -805,7 +537,7 @@
         "type": "uint256"
       }
     ],
-    "name": "UserRequestForSignature",
+    "name": "UserRequestForAffirmation",
     "type": "event"
   },
   {
@@ -827,63 +559,7 @@
         "type": "bytes32"
       }
     ],
-    "name": "AffirmationCompleted",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "name": "signer",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "messageHash",
-        "type": "bytes32"
-      }
-    ],
-    "name": "SignedForUserRequest",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "name": "signer",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "transactionHash",
-        "type": "bytes32"
-      }
-    ],
-    "name": "SignedForAffirmation",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "authorityResponsibleForRelay",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "messageHash",
-        "type": "bytes32"
-      },
-      {
-        "indexed": false,
-        "name": "NumberOfCollectedSignatures",
-        "type": "uint256"
-      }
-    ],
-    "name": "CollectedSignatures",
+    "name": "RelayedMessage",
     "type": "event"
   },
   {
@@ -939,40 +615,6 @@
     "inputs": [
       {
         "indexed": false,
-        "name": "feeAmount",
-        "type": "uint256"
-      },
-      {
-        "indexed": true,
-        "name": "transactionHash",
-        "type": "bytes32"
-      }
-    ],
-    "name": "FeeDistributedFromAffirmation",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "feeAmount",
-        "type": "uint256"
-      },
-      {
-        "indexed": true,
-        "name": "transactionHash",
-        "type": "bytes32"
-      }
-    ],
-    "name": "FeeDistributedFromSignatures",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
         "name": "previousOwner",
         "type": "address"
       },
@@ -986,50 +628,6 @@
     "type": "event"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "recipient",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "value",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "name": "transactionHash",
-        "type": "bytes32"
-      }
-    ],
-    "name": "AmountLimitExceeded",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "name": "transactionHash",
-        "type": "bytes32"
-      },
-      {
-        "indexed": false,
-        "name": "value",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "name": "remaining",
-        "type": "uint256"
-      }
-    ],
-    "name": "AssetAboveLimitsFixed",
-    "type": "event"
-  },
-  {
     "constant": false,
     "inputs": [
       {
@@ -1037,23 +635,23 @@
         "type": "address"
       },
       {
-        "name": "_dailyLimitMaxPerTxMinPerTxArray",
-        "type": "uint256[]"
-      },
-      {
-        "name": "_homeGasPrice",
-        "type": "uint256"
+        "name": "_erc20token",
+        "type": "address"
       },
       {
         "name": "_requiredBlockConfirmations",
         "type": "uint256"
       },
       {
-        "name": "_blockReward",
-        "type": "address"
+        "name": "_gasPrice",
+        "type": "uint256"
       },
       {
-        "name": "_foreignDailyLimitForeignMaxPerTxArray",
+        "name": "_dailyLimitMaxPerTxMinPerTxArray",
+        "type": "uint256[]"
+      },
+      {
+        "name": "_homeDailyLimitHomeMaxPerTxArray",
         "type": "uint256[]"
       },
       {
@@ -1077,78 +675,9 @@
     "type": "function"
   },
   {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_validatorContract",
-        "type": "address"
-      },
-      {
-        "name": "_dailyLimitMaxPerTxMinPerTxArray",
-        "type": "uint256[]"
-      },
-      {
-        "name": "_homeGasPrice",
-        "type": "uint256"
-      },
-      {
-        "name": "_requiredBlockConfirmations",
-        "type": "uint256"
-      },
-      {
-        "name": "_blockReward",
-        "type": "address"
-      },
-      {
-        "name": "_foreignDailyLimitForeignMaxPerTxArray",
-        "type": "uint256[]"
-      },
-      {
-        "name": "_owner",
-        "type": "address"
-      },
-      {
-        "name": "_feeManager",
-        "type": "address"
-      },
-      {
-        "name": "_homeFeeForeignFeeArray",
-        "type": "uint256[]"
-      },
-      {
-        "name": "_decimalShift",
-        "type": "uint256"
-      }
-    ],
-    "name": "rewardableInitialize",
-    "outputs": [
-      {
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "constant": true,
     "inputs": [],
-    "name": "getBridgeMode",
-    "outputs": [
-      {
-        "name": "_data",
-        "type": "bytes4"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "blockRewardContract",
+    "name": "erc20token",
     "outputs": [
       {
         "name": "",
@@ -1157,34 +686,6 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "totalBurntCoins",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_blockReward",
-        "type": "address"
-      }
-    ],
-    "name": "setBlockRewardContract",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
     "type": "function"
   }
 ]

@@ -42,6 +42,20 @@
     "type": "function"
   },
   {
+    "constant": true,
+    "inputs": [],
+    "name": "erc677token",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "constant": false,
     "inputs": [
       {
@@ -180,6 +194,20 @@
   {
     "constant": true,
     "inputs": [],
+    "name": "getBridgeMode",
+    "outputs": [
+      {
+        "name": "_data",
+        "type": "bytes4"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
     "name": "executionDailyLimit",
     "outputs": [
       {
@@ -257,6 +285,53 @@
     ],
     "name": "submitSignature",
     "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_validatorContract",
+        "type": "address"
+      },
+      {
+        "name": "_dailyLimitMaxPerTxMinPerTxArray",
+        "type": "uint256[]"
+      },
+      {
+        "name": "_homeGasPrice",
+        "type": "uint256"
+      },
+      {
+        "name": "_requiredBlockConfirmations",
+        "type": "uint256"
+      },
+      {
+        "name": "_erc677token",
+        "type": "address"
+      },
+      {
+        "name": "_foreignDailyLimitForeignMaxPerTxArray",
+        "type": "uint256[]"
+      },
+      {
+        "name": "_owner",
+        "type": "address"
+      },
+      {
+        "name": "_decimalShift",
+        "type": "uint256"
+      }
+    ],
+    "name": "initialize",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
@@ -412,22 +487,21 @@
     "type": "function"
   },
   {
-    "constant": true,
+    "constant": false,
     "inputs": [
       {
-        "name": "_value",
-        "type": "uint256"
-      }
-    ],
-    "name": "getAmountToBurn",
-    "outputs": [
+        "name": "_token",
+        "type": "address"
+      },
       {
-        "name": "",
-        "type": "uint256"
+        "name": "_to",
+        "type": "address"
       }
     ],
+    "name": "claimTokensFromErc677",
+    "outputs": [],
     "payable": false,
-    "stateMutability": "view",
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -540,6 +614,33 @@
     ],
     "name": "setMinPerTx",
     "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_from",
+        "type": "address"
+      },
+      {
+        "name": "_value",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "bytes"
+      }
+    ],
+    "name": "onTokenTransfer",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
@@ -785,11 +886,6 @@
     "payable": false,
     "stateMutability": "view",
     "type": "function"
-  },
-  {
-    "payable": true,
-    "stateMutability": "payable",
-    "type": "fallback"
   },
   {
     "anonymous": false,
@@ -1049,7 +1145,7 @@
         "type": "uint256"
       },
       {
-        "name": "_blockReward",
+        "name": "_erc677token",
         "type": "address"
       },
       {
@@ -1061,11 +1157,23 @@
         "type": "address"
       },
       {
+        "name": "_feeManager",
+        "type": "address"
+      },
+      {
+        "name": "_homeFeeForeignFeeArray",
+        "type": "uint256[]"
+      },
+      {
+        "name": "_blockReward",
+        "type": "address"
+      },
+      {
         "name": "_decimalShift",
         "type": "uint256"
       }
     ],
-    "name": "initialize",
+    "name": "rewardableInitialize",
     "outputs": [
       {
         "name": "",
@@ -1096,7 +1204,7 @@
         "type": "uint256"
       },
       {
-        "name": "_blockReward",
+        "name": "_erc677token",
         "type": "address"
       },
       {
@@ -1134,39 +1242,11 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "getBridgeMode",
-    "outputs": [
-      {
-        "name": "_data",
-        "type": "bytes4"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
     "name": "blockRewardContract",
     "outputs": [
       {
         "name": "",
         "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "totalBurntCoins",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
       }
     ],
     "payable": false,

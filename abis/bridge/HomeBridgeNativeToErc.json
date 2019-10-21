@@ -59,25 +59,6 @@
     "constant": true,
     "inputs": [
       {
-        "name": "_txHash",
-        "type": "bytes32"
-      }
-    ],
-    "name": "fixedAssets",
-    "outputs": [
-      {
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
         "name": "_day",
         "type": "uint256"
       }
@@ -413,25 +394,6 @@
   },
   {
     "constant": true,
-    "inputs": [
-      {
-        "name": "_value",
-        "type": "uint256"
-      }
-    ],
-    "name": "getAmountToBurn",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
     "inputs": [],
     "name": "getHomeFee",
     "outputs": [
@@ -517,20 +479,6 @@
     "type": "function"
   },
   {
-    "constant": true,
-    "inputs": [],
-    "name": "outOfLimitAmount",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "constant": false,
     "inputs": [
       {
@@ -539,28 +487,6 @@
       }
     ],
     "name": "setMinPerTx",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "txHash",
-        "type": "bytes32"
-      },
-      {
-        "name": "unlockOnForeign",
-        "type": "bool"
-      },
-      {
-        "name": "valueToUnlock",
-        "type": "uint256"
-      }
-    ],
-    "name": "fixAssetsAboveLimits",
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
@@ -796,6 +722,40 @@
     "inputs": [
       {
         "indexed": false,
+        "name": "feeAmount",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "name": "transactionHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "FeeDistributedFromAffirmation",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "feeAmount",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "name": "transactionHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "FeeDistributedFromSignatures",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
         "name": "recipient",
         "type": "address"
       },
@@ -939,40 +899,6 @@
     "inputs": [
       {
         "indexed": false,
-        "name": "feeAmount",
-        "type": "uint256"
-      },
-      {
-        "indexed": true,
-        "name": "transactionHash",
-        "type": "bytes32"
-      }
-    ],
-    "name": "FeeDistributedFromAffirmation",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "feeAmount",
-        "type": "uint256"
-      },
-      {
-        "indexed": true,
-        "name": "transactionHash",
-        "type": "bytes32"
-      }
-    ],
-    "name": "FeeDistributedFromSignatures",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
         "name": "previousOwner",
         "type": "address"
       },
@@ -983,50 +909,6 @@
       }
     ],
     "name": "OwnershipTransferred",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "recipient",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "value",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "name": "transactionHash",
-        "type": "bytes32"
-      }
-    ],
-    "name": "AmountLimitExceeded",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "name": "transactionHash",
-        "type": "bytes32"
-      },
-      {
-        "indexed": false,
-        "name": "value",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "name": "remaining",
-        "type": "uint256"
-      }
-    ],
-    "name": "AssetAboveLimitsFixed",
     "type": "event"
   },
   {
@@ -1047,10 +929,6 @@
       {
         "name": "_requiredBlockConfirmations",
         "type": "uint256"
-      },
-      {
-        "name": "_blockReward",
-        "type": "address"
       },
       {
         "name": "_foreignDailyLimitForeignMaxPerTxArray",
@@ -1096,10 +974,6 @@
         "type": "uint256"
       },
       {
-        "name": "_blockReward",
-        "type": "address"
-      },
-      {
         "name": "_foreignDailyLimitForeignMaxPerTxArray",
         "type": "uint256[]"
       },
@@ -1143,48 +1017,6 @@
     ],
     "payable": false,
     "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "blockRewardContract",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "totalBurntCoins",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_blockReward",
-        "type": "address"
-      }
-    ],
-    "name": "setBlockRewardContract",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
     "type": "function"
   }
 ]

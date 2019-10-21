@@ -2,11 +2,11 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "erc20token",
+    "name": "transactionHash",
     "outputs": [
       {
         "name": "",
-        "type": "address"
+        "type": "bytes32"
       }
     ],
     "payable": false,
@@ -33,51 +33,6 @@
     "type": "function"
   },
   {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "vs",
-        "type": "uint8[]"
-      },
-      {
-        "name": "rs",
-        "type": "bytes32[]"
-      },
-      {
-        "name": "ss",
-        "type": "bytes32[]"
-      },
-      {
-        "name": "message",
-        "type": "bytes"
-      }
-    ],
-    "name": "executeSignatures",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "_day",
-        "type": "uint256"
-      }
-    ],
-    "name": "totalSpentPerDay",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "constant": true,
     "inputs": [],
     "name": "isInitialized",
@@ -85,34 +40,6 @@
       {
         "name": "",
         "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_dailyLimit",
-        "type": "uint256"
-      }
-    ],
-    "name": "setExecutionDailyLimit",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "getCurrentDay",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
       }
     ],
     "payable": false,
@@ -135,31 +62,36 @@
   },
   {
     "constant": true,
-    "inputs": [],
-    "name": "executionDailyLimit",
+    "inputs": [
+      {
+        "name": "_data",
+        "type": "bytes"
+      }
+    ],
+    "name": "getMinimumGasUsage",
     "outputs": [
       {
-        "name": "",
+        "name": "gas",
         "type": "uint256"
       }
     ],
     "payable": false,
-    "stateMutability": "view",
+    "stateMutability": "pure",
     "type": "function"
   },
   {
     "constant": true,
     "inputs": [
       {
-        "name": "_day",
-        "type": "uint256"
+        "name": "_txHash",
+        "type": "bytes32"
       }
     ],
-    "name": "totalExecutedPerDay",
+    "name": "failedMessageReceiver",
     "outputs": [
       {
         "name": "",
-        "type": "uint256"
+        "type": "address"
       }
     ],
     "payable": false,
@@ -169,11 +101,30 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "dailyLimit",
+    "name": "getBridgeMode",
+    "outputs": [
+      {
+        "name": "_data",
+        "type": "bytes4"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_txHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "failedMessageSender",
     "outputs": [
       {
         "name": "",
-        "type": "uint256"
+        "type": "address"
       }
     ],
     "payable": false,
@@ -181,14 +132,48 @@
     "type": "function"
   },
   {
-    "constant": true,
+    "constant": false,
     "inputs": [
       {
-        "name": "_amount",
-        "type": "uint256"
+        "name": "_token",
+        "type": "address"
+      },
+      {
+        "name": "_to",
+        "type": "address"
       }
     ],
-    "name": "withinExecutionLimit",
+    "name": "claimTokens",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_validatorContract",
+        "type": "address"
+      },
+      {
+        "name": "_maxGasPerTx",
+        "type": "uint256"
+      },
+      {
+        "name": "_gasPrice",
+        "type": "uint256"
+      },
+      {
+        "name": "_requiredBlockConfirmations",
+        "type": "uint256"
+      },
+      {
+        "name": "_owner",
+        "type": "address"
+      }
+    ],
+    "name": "initialize",
     "outputs": [
       {
         "name": "",
@@ -196,21 +181,21 @@
       }
     ],
     "payable": false,
-    "stateMutability": "view",
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
-    "constant": true,
-    "inputs": [],
-    "name": "executionMaxPerTx",
-    "outputs": [
+    "constant": false,
+    "inputs": [
       {
-        "name": "",
+        "name": "_maxGasPerTx",
         "type": "uint256"
       }
     ],
+    "name": "setMaxGasPerTx",
+    "outputs": [],
     "payable": false,
-    "stateMutability": "view",
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -295,39 +280,11 @@
     "constant": false,
     "inputs": [
       {
-        "name": "_minPerTx",
-        "type": "uint256"
-      }
-    ],
-    "name": "setMinPerTx",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
         "name": "_blockConfirmations",
         "type": "uint256"
       }
     ],
     "name": "setRequiredBlockConfirmations",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_dailyLimit",
-        "type": "uint256"
-      }
-    ],
-    "name": "setDailyLimit",
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
@@ -348,56 +305,14 @@
     "type": "function"
   },
   {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_maxPerTx",
-        "type": "uint256"
-      }
-    ],
-    "name": "setMaxPerTx",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "decimalShift",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "minPerTx",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "constant": true,
     "inputs": [
       {
-        "name": "_amount",
-        "type": "uint256"
+        "name": "_txHash",
+        "type": "bytes32"
       }
     ],
-    "name": "withinLimit",
+    "name": "messageCallStatus",
     "outputs": [
       {
         "name": "",
@@ -409,17 +324,72 @@
     "type": "function"
   },
   {
+    "constant": true,
+    "inputs": [],
+    "name": "messageSender",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "constant": false,
     "inputs": [
       {
-        "name": "_maxPerTx",
+        "name": "_contract",
+        "type": "address"
+      },
+      {
+        "name": "_data",
+        "type": "bytes"
+      },
+      {
+        "name": "_gas",
         "type": "uint256"
       }
     ],
-    "name": "setExecutionMaxPerTx",
+    "name": "requireToPassMessage",
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_txHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "failedMessageDataHash",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "maxGasPerTx",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -439,20 +409,6 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "maxPerTx",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
     "name": "gasPrice",
     "outputs": [
       {
@@ -463,52 +419,6 @@
     "payable": false,
     "stateMutability": "view",
     "type": "function"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "recipient",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "value",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "name": "transactionHash",
-        "type": "bytes32"
-      }
-    ],
-    "name": "RelayedMessage",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "newLimit",
-        "type": "uint256"
-      }
-    ],
-    "name": "DailyLimitChanged",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "newLimit",
-        "type": "uint256"
-      }
-    ],
-    "name": "ExecutionDailyLimitChanged",
-    "type": "event"
   },
   {
     "anonymous": false,
@@ -555,72 +465,15 @@
     "constant": false,
     "inputs": [
       {
-        "name": "_validatorContract",
-        "type": "address"
-      },
-      {
-        "name": "_erc20token",
-        "type": "address"
-      },
-      {
-        "name": "_requiredBlockConfirmations",
-        "type": "uint256"
-      },
-      {
-        "name": "_gasPrice",
-        "type": "uint256"
-      },
-      {
-        "name": "_maxPerTxHomeDailyLimitHomeMaxPerTxArray",
-        "type": "uint256[]"
-      },
-      {
-        "name": "_owner",
-        "type": "address"
-      },
-      {
-        "name": "_decimalShift",
-        "type": "uint256"
-      }
-    ],
-    "name": "initialize",
-    "outputs": [
-      {
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "getBridgeMode",
-    "outputs": [
-      {
         "name": "_data",
-        "type": "bytes4"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_token",
-        "type": "address"
+        "type": "bytes"
       },
       {
-        "name": "_to",
-        "type": "address"
+        "name": "_signatures",
+        "type": "bytes"
       }
     ],
-    "name": "claimTokens",
+    "name": "executeSignatures",
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",

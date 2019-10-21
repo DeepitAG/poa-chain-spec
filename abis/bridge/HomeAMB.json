@@ -2,30 +2,30 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "erc20token",
+    "name": "transactionHash",
     "outputs": [
       {
         "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "_txHash",
         "type": "bytes32"
       }
     ],
-    "name": "relayedMessages",
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_message",
+        "type": "bytes32"
+      }
+    ],
+    "name": "numMessagesSigned",
     "outputs": [
       {
         "name": "",
-        "type": "bool"
+        "type": "uint256"
       }
     ],
     "payable": false,
@@ -33,44 +33,22 @@
     "type": "function"
   },
   {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "vs",
-        "type": "uint8[]"
-      },
-      {
-        "name": "rs",
-        "type": "bytes32[]"
-      },
-      {
-        "name": "ss",
-        "type": "bytes32[]"
-      },
-      {
-        "name": "message",
-        "type": "bytes"
-      }
-    ],
-    "name": "executeSignatures",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "constant": true,
     "inputs": [
       {
-        "name": "_day",
+        "name": "_hash",
+        "type": "bytes32"
+      },
+      {
+        "name": "_index",
         "type": "uint256"
       }
     ],
-    "name": "totalSpentPerDay",
+    "name": "signature",
     "outputs": [
       {
         "name": "",
-        "type": "uint256"
+        "type": "bytes"
       }
     ],
     "payable": false,
@@ -85,34 +63,6 @@
       {
         "name": "",
         "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_dailyLimit",
-        "type": "uint256"
-      }
-    ],
-    "name": "setExecutionDailyLimit",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "getCurrentDay",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
       }
     ],
     "payable": false,
@@ -135,12 +85,69 @@
   },
   {
     "constant": true,
-    "inputs": [],
-    "name": "executionDailyLimit",
+    "inputs": [
+      {
+        "name": "_data",
+        "type": "bytes"
+      }
+    ],
+    "name": "getMinimumGasUsage",
+    "outputs": [
+      {
+        "name": "gas",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_txHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "failedMessageReceiver",
     "outputs": [
       {
         "name": "",
-        "type": "uint256"
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getBridgeMode",
+    "outputs": [
+      {
+        "name": "_data",
+        "type": "bytes4"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_hash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "message",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes"
       }
     ],
     "payable": false,
@@ -151,15 +158,15 @@
     "constant": true,
     "inputs": [
       {
-        "name": "_day",
-        "type": "uint256"
+        "name": "_txHash",
+        "type": "bytes32"
       }
     ],
-    "name": "totalExecutedPerDay",
+    "name": "failedMessageSender",
     "outputs": [
       {
         "name": "",
-        "type": "uint256"
+        "type": "address"
       }
     ],
     "payable": false,
@@ -167,28 +174,104 @@
     "type": "function"
   },
   {
-    "constant": true,
-    "inputs": [],
-    "name": "dailyLimit",
-    "outputs": [
+    "constant": false,
+    "inputs": [
       {
-        "name": "",
-        "type": "uint256"
+        "name": "signature",
+        "type": "bytes"
+      },
+      {
+        "name": "message",
+        "type": "bytes"
       }
     ],
+    "name": "submitSignature",
+    "outputs": [],
     "payable": false,
-    "stateMutability": "view",
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_token",
+        "type": "address"
+      },
+      {
+        "name": "_to",
+        "type": "address"
+      }
+    ],
+    "name": "claimTokens",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "constant": true,
     "inputs": [
       {
-        "name": "_amount",
+        "name": "_hash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "numAffirmationsSigned",
+    "outputs": [
+      {
+        "name": "",
         "type": "uint256"
       }
     ],
-    "name": "withinExecutionLimit",
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_validatorContract",
+        "type": "address"
+      },
+      {
+        "name": "_maxGasPerTx",
+        "type": "uint256"
+      },
+      {
+        "name": "_gasPrice",
+        "type": "uint256"
+      },
+      {
+        "name": "_requiredBlockConfirmations",
+        "type": "uint256"
+      },
+      {
+        "name": "_owner",
+        "type": "address"
+      }
+    ],
+    "name": "initialize",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_hash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "affirmationsSigned",
     "outputs": [
       {
         "name": "",
@@ -200,17 +283,17 @@
     "type": "function"
   },
   {
-    "constant": true,
-    "inputs": [],
-    "name": "executionMaxPerTx",
-    "outputs": [
+    "constant": false,
+    "inputs": [
       {
-        "name": "",
+        "name": "_maxGasPerTx",
         "type": "uint256"
       }
     ],
+    "name": "setMaxGasPerTx",
+    "outputs": [],
     "payable": false,
-    "stateMutability": "view",
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -235,6 +318,25 @@
       {
         "name": "",
         "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_message",
+        "type": "bytes32"
+      }
+    ],
+    "name": "messagesSigned",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
       }
     ],
     "payable": false,
@@ -295,39 +397,11 @@
     "constant": false,
     "inputs": [
       {
-        "name": "_minPerTx",
-        "type": "uint256"
-      }
-    ],
-    "name": "setMinPerTx",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
         "name": "_blockConfirmations",
         "type": "uint256"
       }
     ],
     "name": "setRequiredBlockConfirmations",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_dailyLimit",
-        "type": "uint256"
-      }
-    ],
-    "name": "setDailyLimit",
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
@@ -348,56 +422,14 @@
     "type": "function"
   },
   {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_maxPerTx",
-        "type": "uint256"
-      }
-    ],
-    "name": "setMaxPerTx",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "decimalShift",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "minPerTx",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "constant": true,
     "inputs": [
       {
-        "name": "_amount",
-        "type": "uint256"
+        "name": "_txHash",
+        "type": "bytes32"
       }
     ],
-    "name": "withinLimit",
+    "name": "messageCallStatus",
     "outputs": [
       {
         "name": "",
@@ -409,14 +441,83 @@
     "type": "function"
   },
   {
+    "constant": true,
+    "inputs": [],
+    "name": "messageSender",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "constant": false,
     "inputs": [
       {
-        "name": "_maxPerTx",
+        "name": "_contract",
+        "type": "address"
+      },
+      {
+        "name": "_data",
+        "type": "bytes"
+      },
+      {
+        "name": "_gas",
         "type": "uint256"
       }
     ],
-    "name": "setExecutionMaxPerTx",
+    "name": "requireToPassMessage",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_txHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "failedMessageDataHash",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "maxGasPerTx",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "message",
+        "type": "bytes"
+      }
+    ],
+    "name": "executeAffirmation",
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
@@ -439,20 +540,6 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "maxPerTx",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
     "name": "gasPrice",
     "outputs": [
       {
@@ -465,25 +552,95 @@
     "type": "function"
   },
   {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_number",
+        "type": "uint256"
+      }
+    ],
+    "name": "isAlreadyProcessed",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
     "anonymous": false,
     "inputs": [
       {
         "indexed": false,
-        "name": "recipient",
+        "name": "encodedData",
+        "type": "bytes"
+      }
+    ],
+    "name": "UserRequestForSignature",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "sender",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "executor",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "transactionHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "status",
+        "type": "bool"
+      }
+    ],
+    "name": "AffirmationCompleted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "signer",
         "type": "address"
       },
       {
         "indexed": false,
-        "name": "value",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "name": "transactionHash",
+        "name": "messageHash",
         "type": "bytes32"
       }
     ],
-    "name": "RelayedMessage",
+    "name": "SignedForUserRequest",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "signer",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "messageHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "SignedForAffirmation",
     "type": "event"
   },
   {
@@ -491,23 +648,21 @@
     "inputs": [
       {
         "indexed": false,
-        "name": "newLimit",
-        "type": "uint256"
-      }
-    ],
-    "name": "DailyLimitChanged",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
+        "name": "authorityResponsibleForRelay",
+        "type": "address"
+      },
       {
         "indexed": false,
-        "name": "newLimit",
+        "name": "messageHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "NumberOfCollectedSignatures",
         "type": "uint256"
       }
     ],
-    "name": "ExecutionDailyLimitChanged",
+    "name": "CollectedSignatures",
     "type": "event"
   },
   {
@@ -550,80 +705,5 @@
     ],
     "name": "OwnershipTransferred",
     "type": "event"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_validatorContract",
-        "type": "address"
-      },
-      {
-        "name": "_erc20token",
-        "type": "address"
-      },
-      {
-        "name": "_requiredBlockConfirmations",
-        "type": "uint256"
-      },
-      {
-        "name": "_gasPrice",
-        "type": "uint256"
-      },
-      {
-        "name": "_maxPerTxHomeDailyLimitHomeMaxPerTxArray",
-        "type": "uint256[]"
-      },
-      {
-        "name": "_owner",
-        "type": "address"
-      },
-      {
-        "name": "_decimalShift",
-        "type": "uint256"
-      }
-    ],
-    "name": "initialize",
-    "outputs": [
-      {
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "getBridgeMode",
-    "outputs": [
-      {
-        "name": "_data",
-        "type": "bytes4"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_token",
-        "type": "address"
-      },
-      {
-        "name": "_to",
-        "type": "address"
-      }
-    ],
-    "name": "claimTokens",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
   }
 ]
