@@ -1,0 +1,92 @@
+[
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_data",
+        "type": "bytes"
+      }
+    ],
+    "name": "unpackData",
+    "outputs": [
+      {
+        "name": "sender",
+        "type": "address"
+      },
+      {
+        "name": "executor",
+        "type": "address"
+      },
+      {
+        "name": "txHash",
+        "type": "bytes32"
+      },
+      {
+        "name": "gasLimit",
+        "type": "uint256"
+      },
+      {
+        "name": "dataType",
+        "type": "bytes1"
+      },
+      {
+        "name": "gasPrice",
+        "type": "uint256"
+      },
+      {
+        "name": "data",
+        "type": "bytes"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_data",
+        "type": "bytes"
+      },
+      {
+        "name": "",
+        "type": "bytes"
+      }
+    ],
+    "name": "unpackDataWithExtraParams",
+    "outputs": [
+      {
+        "name": "sender",
+        "type": "address"
+      },
+      {
+        "name": "executor",
+        "type": "address"
+      },
+      {
+        "name": "txHash",
+        "type": "bytes32"
+      },
+      {
+        "name": "gasLimit",
+        "type": "uint256"
+      },
+      {
+        "name": "dataType",
+        "type": "bytes1"
+      },
+      {
+        "name": "gasPrice",
+        "type": "uint256"
+      },
+      {
+        "name": "data",
+        "type": "bytes"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "pure",
+    "type": "function"
+  }
+]

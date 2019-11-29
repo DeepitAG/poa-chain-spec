@@ -136,6 +136,20 @@
   {
     "constant": true,
     "inputs": [],
+    "name": "getBridgeMode",
+    "outputs": [
+      {
+        "name": "_data",
+        "type": "bytes4"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
     "name": "executionDailyLimit",
     "outputs": [
       {
@@ -178,6 +192,24 @@
     ],
     "payable": false,
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_token",
+        "type": "address"
+      },
+      {
+        "name": "_to",
+        "type": "address"
+      }
+    ],
+    "name": "claimTokens",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -590,38 +622,6 @@
         "type": "bool"
       }
     ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "getBridgeMode",
-    "outputs": [
-      {
-        "name": "_data",
-        "type": "bytes4"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_token",
-        "type": "address"
-      },
-      {
-        "name": "_to",
-        "type": "address"
-      }
-    ],
-    "name": "claimTokens",
-    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"

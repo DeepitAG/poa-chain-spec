@@ -1,20 +1,6 @@
 [
   {
     "constant": true,
-    "inputs": [],
-    "name": "erc20token",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
     "inputs": [
       {
         "name": "_txHash",
@@ -30,32 +16,6 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "vs",
-        "type": "uint8[]"
-      },
-      {
-        "name": "rs",
-        "type": "bytes32[]"
-      },
-      {
-        "name": "ss",
-        "type": "bytes32[]"
-      },
-      {
-        "name": "message",
-        "type": "bytes"
-      }
-    ],
-    "name": "executeSignatures",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -136,6 +96,20 @@
   {
     "constant": true,
     "inputs": [],
+    "name": "getBridgeMode",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes4"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
     "name": "executionDailyLimit",
     "outputs": [
       {
@@ -178,6 +152,24 @@
     ],
     "payable": false,
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_token",
+        "type": "address"
+      },
+      {
+        "name": "_to",
+        "type": "address"
+      }
+    ],
+    "name": "claimTokens",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -555,72 +547,23 @@
     "constant": false,
     "inputs": [
       {
-        "name": "_validatorContract",
-        "type": "address"
+        "name": "vs",
+        "type": "uint8[]"
       },
       {
-        "name": "_erc20token",
-        "type": "address"
+        "name": "rs",
+        "type": "bytes32[]"
       },
       {
-        "name": "_requiredBlockConfirmations",
-        "type": "uint256"
+        "name": "ss",
+        "type": "bytes32[]"
       },
       {
-        "name": "_gasPrice",
-        "type": "uint256"
-      },
-      {
-        "name": "_maxPerTxHomeDailyLimitHomeMaxPerTxArray",
-        "type": "uint256[]"
-      },
-      {
-        "name": "_owner",
-        "type": "address"
-      },
-      {
-        "name": "_decimalShift",
-        "type": "uint256"
+        "name": "message",
+        "type": "bytes"
       }
     ],
-    "name": "initialize",
-    "outputs": [
-      {
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "getBridgeMode",
-    "outputs": [
-      {
-        "name": "_data",
-        "type": "bytes4"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_token",
-        "type": "address"
-      },
-      {
-        "name": "_to",
-        "type": "address"
-      }
-    ],
-    "name": "claimTokens",
+    "name": "executeSignatures",
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",

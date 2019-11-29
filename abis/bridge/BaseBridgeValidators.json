@@ -2,108 +2,11 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "validatorCount",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "getBridgeValidatorsInterfacesVersion",
-    "outputs": [
-      {
-        "name": "major",
-        "type": "uint64"
-      },
-      {
-        "name": "minor",
-        "type": "uint64"
-      },
-      {
-        "name": "patch",
-        "type": "uint64"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
     "name": "isInitialized",
     "outputs": [
       {
         "name": "",
         "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "validatorList",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address[]"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_requiredSignatures",
-        "type": "uint256"
-      }
-    ],
-    "name": "setRequiredSignatures",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "requiredSignatures",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "_address",
-        "type": "address"
-      }
-    ],
-    "name": "getNextValidator",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address"
       }
     ],
     "payable": false,
@@ -167,25 +70,6 @@
     "type": "function"
   },
   {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "_validator",
-        "type": "address"
-      }
-    ],
-    "name": "isValidator",
-    "outputs": [
-      {
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "anonymous": false,
     "inputs": [
       {
@@ -244,17 +128,87 @@
       {
         "name": "_requiredSignatures",
         "type": "uint256"
+      }
+    ],
+    "name": "setRequiredSignatures",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getBridgeValidatorsInterfacesVersion",
+    "outputs": [
+      {
+        "name": "major",
+        "type": "uint64"
       },
       {
-        "name": "_initialValidators",
+        "name": "minor",
+        "type": "uint64"
+      },
+      {
+        "name": "patch",
+        "type": "uint64"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "validatorList",
+    "outputs": [
+      {
+        "name": "",
         "type": "address[]"
-      },
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "requiredSignatures",
+    "outputs": [
       {
-        "name": "_owner",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "validatorCount",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_validator",
         "type": "address"
       }
     ],
-    "name": "initialize",
+    "name": "isValidator",
     "outputs": [
       {
         "name": "",
@@ -262,35 +216,26 @@
       }
     ],
     "payable": false,
-    "stateMutability": "nonpayable",
+    "stateMutability": "view",
     "type": "function"
   },
   {
-    "constant": false,
+    "constant": true,
     "inputs": [
       {
-        "name": "_validator",
+        "name": "_address",
         "type": "address"
       }
     ],
-    "name": "addValidator",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
+    "name": "getNextValidator",
+    "outputs": [
       {
-        "name": "_validator",
+        "name": "",
         "type": "address"
       }
     ],
-    "name": "removeValidator",
-    "outputs": [],
     "payable": false,
-    "stateMutability": "nonpayable",
+    "stateMutability": "view",
     "type": "function"
   }
 ]

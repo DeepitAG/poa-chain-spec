@@ -2,42 +2,6 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "validatorCount",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "getBridgeValidatorsInterfacesVersion",
-    "outputs": [
-      {
-        "name": "major",
-        "type": "uint64"
-      },
-      {
-        "name": "minor",
-        "type": "uint64"
-      },
-      {
-        "name": "patch",
-        "type": "uint64"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
     "name": "isInitialized",
     "outputs": [
       {
@@ -52,29 +16,15 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "validatorList",
+    "name": "getBridgeMode",
     "outputs": [
       {
         "name": "",
-        "type": "address[]"
+        "type": "bytes4"
       }
     ],
     "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_requiredSignatures",
-        "type": "uint256"
-      }
-    ],
-    "name": "setRequiredSignatures",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
+    "stateMutability": "pure",
     "type": "function"
   },
   {
@@ -93,13 +43,8 @@
   },
   {
     "constant": true,
-    "inputs": [
-      {
-        "name": "_address",
-        "type": "address"
-      }
-    ],
-    "name": "getNextValidator",
+    "inputs": [],
+    "name": "owner",
     "outputs": [
       {
         "name": "",
@@ -113,7 +58,7 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "owner",
+    "name": "validatorContract",
     "outputs": [
       {
         "name": "",
@@ -141,15 +86,23 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "F_ADDR",
+    "name": "getBridgeInterfacesVersion",
     "outputs": [
       {
-        "name": "",
-        "type": "address"
+        "name": "major",
+        "type": "uint64"
+      },
+      {
+        "name": "minor",
+        "type": "uint64"
+      },
+      {
+        "name": "patch",
+        "type": "uint64"
       }
     ],
     "payable": false,
-    "stateMutability": "view",
+    "stateMutability": "pure",
     "type": "function"
   },
   {
@@ -167,46 +120,15 @@
     "type": "function"
   },
   {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "_validator",
-        "type": "address"
-      }
-    ],
-    "name": "isValidator",
-    "outputs": [
-      {
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "anonymous": false,
     "inputs": [
       {
-        "indexed": true,
-        "name": "validator",
-        "type": "address"
+        "indexed": false,
+        "name": "gasPrice",
+        "type": "uint256"
       }
     ],
-    "name": "ValidatorAdded",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "name": "validator",
-        "type": "address"
-      }
-    ],
-    "name": "ValidatorRemoved",
+    "name": "GasPriceChanged",
     "type": "event"
   },
   {
@@ -214,11 +136,11 @@
     "inputs": [
       {
         "indexed": false,
-        "name": "requiredSignatures",
+        "name": "requiredBlockConfirmations",
         "type": "uint256"
       }
     ],
-    "name": "RequiredSignaturesChanged",
+    "name": "RequiredBlockConfirmationChanged",
     "type": "event"
   },
   {
@@ -242,52 +164,71 @@
     "constant": false,
     "inputs": [
       {
-        "name": "_requiredSignatures",
+        "name": "_gasPrice",
         "type": "uint256"
-      },
-      {
-        "name": "_initialValidators",
-        "type": "address[]"
-      },
-      {
-        "name": "_owner",
-        "type": "address"
       }
     ],
-    "name": "initialize",
-    "outputs": [
-      {
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_validator",
-        "type": "address"
-      }
-    ],
-    "name": "addValidator",
+    "name": "setGasPrice",
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
+    "constant": true,
+    "inputs": [],
+    "name": "gasPrice",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "constant": false,
     "inputs": [
       {
-        "name": "_validator",
+        "name": "_blockConfirmations",
+        "type": "uint256"
+      }
+    ],
+    "name": "setRequiredBlockConfirmations",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "requiredBlockConfirmations",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_token",
+        "type": "address"
+      },
+      {
+        "name": "_to",
         "type": "address"
       }
     ],
-    "name": "removeValidator",
+    "name": "claimTokens",
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",

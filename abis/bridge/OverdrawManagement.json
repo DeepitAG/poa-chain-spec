@@ -1,27 +1,13 @@
 [
   {
     "constant": true,
-    "inputs": [],
-    "name": "erc20token",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
     "inputs": [
       {
         "name": "_txHash",
         "type": "bytes32"
       }
     ],
-    "name": "relayedMessages",
+    "name": "fixedAssets",
     "outputs": [
       {
         "name": "",
@@ -30,32 +16,6 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "vs",
-        "type": "uint8[]"
-      },
-      {
-        "name": "rs",
-        "type": "bytes32[]"
-      },
-      {
-        "name": "ss",
-        "type": "bytes32[]"
-      },
-      {
-        "name": "message",
-        "type": "bytes"
-      }
-    ],
-    "name": "executeSignatures",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -71,20 +31,6 @@
       {
         "name": "",
         "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "isInitialized",
-    "outputs": [
-      {
-        "name": "",
-        "type": "bool"
       }
     ],
     "payable": false,
@@ -109,20 +55,6 @@
     "constant": true,
     "inputs": [],
     "name": "getCurrentDay",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "requiredBlockConfirmations",
     "outputs": [
       {
         "name": "",
@@ -164,6 +96,20 @@
     ],
     "payable": false,
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_feeManager",
+        "type": "address"
+      }
+    ],
+    "name": "setFeeManagerContract",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -216,20 +162,6 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "requiredSignatures",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
     "name": "owner",
     "outputs": [
       {
@@ -244,21 +176,7 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "validatorContract",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "deployedAtBlock",
+    "name": "outOfLimitAmount",
     "outputs": [
       {
         "name": "",
@@ -267,28 +185,6 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "getBridgeInterfacesVersion",
-    "outputs": [
-      {
-        "name": "major",
-        "type": "uint64"
-      },
-      {
-        "name": "minor",
-        "type": "uint64"
-      },
-      {
-        "name": "patch",
-        "type": "uint64"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "pure",
     "type": "function"
   },
   {
@@ -309,39 +205,11 @@
     "constant": false,
     "inputs": [
       {
-        "name": "_blockConfirmations",
-        "type": "uint256"
-      }
-    ],
-    "name": "setRequiredBlockConfirmations",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
         "name": "_dailyLimit",
         "type": "uint256"
       }
     ],
     "name": "setDailyLimit",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_gasPrice",
-        "type": "uint256"
-      }
-    ],
-    "name": "setGasPrice",
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
@@ -369,6 +237,20 @@
       {
         "name": "",
         "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "feeManagerContract",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
       }
     ],
     "payable": false,
@@ -423,6 +305,20 @@
     "type": "function"
   },
   {
+    "constant": true,
+    "inputs": [],
+    "name": "getFeeManagerMode",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes4"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "constant": false,
     "inputs": [
       {
@@ -451,20 +347,6 @@
     "type": "function"
   },
   {
-    "constant": true,
-    "inputs": [],
-    "name": "gasPrice",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "anonymous": false,
     "inputs": [
       {
@@ -476,14 +358,9 @@
         "indexed": false,
         "name": "value",
         "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "name": "transactionHash",
-        "type": "bytes32"
       }
     ],
-    "name": "RelayedMessage",
+    "name": "UserRequestForSignature",
     "type": "event"
   },
   {
@@ -515,11 +392,16 @@
     "inputs": [
       {
         "indexed": false,
-        "name": "gasPrice",
+        "name": "feeAmount",
         "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "name": "transactionHash",
+        "type": "bytes32"
       }
     ],
-    "name": "GasPriceChanged",
+    "name": "FeeDistributedFromAffirmation",
     "type": "event"
   },
   {
@@ -527,11 +409,16 @@
     "inputs": [
       {
         "indexed": false,
-        "name": "requiredBlockConfirmations",
+        "name": "feeAmount",
         "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "name": "transactionHash",
+        "type": "bytes32"
       }
     ],
-    "name": "RequiredBlockConfirmationChanged",
+    "name": "FeeDistributedFromSignatures",
     "type": "event"
   },
   {
@@ -552,75 +439,66 @@
     "type": "event"
   },
   {
-    "constant": false,
+    "anonymous": false,
     "inputs": [
       {
-        "name": "_validatorContract",
+        "indexed": false,
+        "name": "recipient",
         "type": "address"
       },
       {
-        "name": "_erc20token",
-        "type": "address"
-      },
-      {
-        "name": "_requiredBlockConfirmations",
+        "indexed": false,
+        "name": "value",
         "type": "uint256"
       },
       {
-        "name": "_gasPrice",
+        "indexed": false,
+        "name": "transactionHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "AmountLimitExceeded",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "transactionHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "value",
         "type": "uint256"
       },
       {
-        "name": "_maxPerTxHomeDailyLimitHomeMaxPerTxArray",
-        "type": "uint256[]"
-      },
-      {
-        "name": "_owner",
-        "type": "address"
-      },
-      {
-        "name": "_decimalShift",
+        "indexed": false,
+        "name": "remaining",
         "type": "uint256"
       }
     ],
-    "name": "initialize",
-    "outputs": [
+    "name": "AssetAboveLimitsFixed",
+    "type": "event"
+  },
+  {
+    "constant": false,
+    "inputs": [
       {
-        "name": "",
+        "name": "txHash",
+        "type": "bytes32"
+      },
+      {
+        "name": "unlockOnForeign",
         "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "getBridgeMode",
-    "outputs": [
-      {
-        "name": "_data",
-        "type": "bytes4"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_token",
-        "type": "address"
       },
       {
-        "name": "_to",
-        "type": "address"
+        "name": "valueToUnlock",
+        "type": "uint256"
       }
     ],
-    "name": "claimTokens",
+    "name": "fixAssetsAboveLimits",
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",

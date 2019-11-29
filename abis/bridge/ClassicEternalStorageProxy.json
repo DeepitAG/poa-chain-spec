@@ -133,5 +133,24 @@
     ],
     "name": "Upgraded",
     "type": "event"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "sig",
+        "type": "bytes4"
+      }
+    ],
+    "name": "getSize",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
   }
 ]

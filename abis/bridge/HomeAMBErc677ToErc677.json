@@ -1,8 +1,36 @@
 [
   {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_dataHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "fixFailedMessage",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_bridgeContract",
+        "type": "address"
+      }
+    ],
+    "name": "setBridgeContract",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "constant": true,
     "inputs": [],
-    "name": "erc20token",
+    "name": "erc677token",
     "outputs": [
       {
         "name": "",
@@ -21,7 +49,7 @@
         "type": "bytes32"
       }
     ],
-    "name": "relayedMessages",
+    "name": "fixedAssets",
     "outputs": [
       {
         "name": "",
@@ -30,32 +58,6 @@
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "vs",
-        "type": "uint8[]"
-      },
-      {
-        "name": "rs",
-        "type": "bytes32[]"
-      },
-      {
-        "name": "ss",
-        "type": "bytes32[]"
-      },
-      {
-        "name": "message",
-        "type": "bytes"
-      }
-    ],
-    "name": "executeSignatures",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -122,15 +124,15 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "requiredBlockConfirmations",
+    "name": "getBridgeMode",
     "outputs": [
       {
-        "name": "",
-        "type": "uint256"
+        "name": "_data",
+        "type": "bytes4"
       }
     ],
     "payable": false,
-    "stateMutability": "view",
+    "stateMutability": "pure",
     "type": "function"
   },
   {
@@ -167,6 +169,28 @@
     "type": "function"
   },
   {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_recipient",
+        "type": "address"
+      },
+      {
+        "name": "_value",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "name": "handleBridgedTokens",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "constant": true,
     "inputs": [],
     "name": "dailyLimit",
@@ -174,6 +198,99 @@
       {
         "name": "",
         "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_token",
+        "type": "address"
+      },
+      {
+        "name": "_to",
+        "type": "address"
+      }
+    ],
+    "name": "claimTokens",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_mediatorContract",
+        "type": "address"
+      }
+    ],
+    "name": "setMediatorContractOnOtherSide",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_bridgeContract",
+        "type": "address"
+      },
+      {
+        "name": "_mediatorContract",
+        "type": "address"
+      },
+      {
+        "name": "_erc677token",
+        "type": "address"
+      },
+      {
+        "name": "_dailyLimitMaxPerTxMinPerTxArray",
+        "type": "uint256[]"
+      },
+      {
+        "name": "_executionDailyLimitExecutionMaxPerTxArray",
+        "type": "uint256[]"
+      },
+      {
+        "name": "_requestGasLimit",
+        "type": "uint256"
+      },
+      {
+        "name": "_decimalShift",
+        "type": "uint256"
+      },
+      {
+        "name": "_owner",
+        "type": "address"
+      }
+    ],
+    "name": "initialize",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "mediatorContractOnOtherSide",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
       }
     ],
     "payable": false,
@@ -216,20 +333,6 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "requiredSignatures",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
     "name": "owner",
     "outputs": [
       {
@@ -243,12 +346,17 @@
   },
   {
     "constant": true,
-    "inputs": [],
-    "name": "validatorContract",
+    "inputs": [
+      {
+        "name": "_hash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "messageHashFixed",
     "outputs": [
       {
         "name": "",
-        "type": "address"
+        "type": "bool"
       }
     ],
     "payable": false,
@@ -267,6 +375,20 @@
     ],
     "payable": false,
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_txHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "requestFailedMessageFix",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -292,6 +414,20 @@
     "type": "function"
   },
   {
+    "constant": true,
+    "inputs": [],
+    "name": "outOfLimitAmount",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "constant": false,
     "inputs": [
       {
@@ -309,11 +445,46 @@
     "constant": false,
     "inputs": [
       {
-        "name": "_blockConfirmations",
+        "name": "_from",
+        "type": "address"
+      },
+      {
+        "name": "_value",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "bytes"
+      }
+    ],
+    "name": "onTokenTransfer",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "txHash",
+        "type": "bytes32"
+      },
+      {
+        "name": "unlockOnForeign",
+        "type": "bool"
+      },
+      {
+        "name": "valueToUnlock",
         "type": "uint256"
       }
     ],
-    "name": "setRequiredBlockConfirmations",
+    "name": "fixAssetsAboveLimits",
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
@@ -334,17 +505,17 @@
     "type": "function"
   },
   {
-    "constant": false,
-    "inputs": [
+    "constant": true,
+    "inputs": [],
+    "name": "requestGasLimit",
+    "outputs": [
       {
-        "name": "_gasPrice",
+        "name": "",
         "type": "uint256"
       }
     ],
-    "name": "setGasPrice",
-    "outputs": [],
     "payable": false,
-    "stateMutability": "nonpayable",
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -364,6 +535,20 @@
   {
     "constant": true,
     "inputs": [],
+    "name": "bridgeContract",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
     "name": "decimalShift",
     "outputs": [
       {
@@ -373,6 +558,20 @@
     ],
     "payable": false,
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_value",
+        "type": "uint256"
+      }
+    ],
+    "name": "relayTokens",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -437,6 +636,20 @@
     "type": "function"
   },
   {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_requestGasLimit",
+        "type": "uint256"
+      }
+    ],
+    "name": "setRequestGasLimit",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "constant": true,
     "inputs": [],
     "name": "maxPerTx",
@@ -451,22 +664,13 @@
     "type": "function"
   },
   {
-    "constant": true,
-    "inputs": [],
-    "name": "gasPrice",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "anonymous": false,
     "inputs": [
+      {
+        "indexed": true,
+        "name": "dataHash",
+        "type": "bytes32"
+      },
       {
         "indexed": false,
         "name": "recipient",
@@ -476,14 +680,9 @@
         "indexed": false,
         "name": "value",
         "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "name": "transactionHash",
-        "type": "bytes32"
       }
     ],
-    "name": "RelayedMessage",
+    "name": "FailedMessageFixed",
     "type": "event"
   },
   {
@@ -515,23 +714,43 @@
     "inputs": [
       {
         "indexed": false,
-        "name": "gasPrice",
+        "name": "recipient",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "value",
         "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "name": "transactionHash",
+        "type": "bytes32"
       }
     ],
-    "name": "GasPriceChanged",
+    "name": "AmountLimitExceeded",
     "type": "event"
   },
   {
     "anonymous": false,
     "inputs": [
       {
+        "indexed": true,
+        "name": "transactionHash",
+        "type": "bytes32"
+      },
+      {
         "indexed": false,
-        "name": "requiredBlockConfirmations",
+        "name": "value",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "name": "remaining",
         "type": "uint256"
       }
     ],
-    "name": "RequiredBlockConfirmationChanged",
+    "name": "AssetAboveLimitsFixed",
     "type": "event"
   },
   {
@@ -550,80 +769,5 @@
     ],
     "name": "OwnershipTransferred",
     "type": "event"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_validatorContract",
-        "type": "address"
-      },
-      {
-        "name": "_erc20token",
-        "type": "address"
-      },
-      {
-        "name": "_requiredBlockConfirmations",
-        "type": "uint256"
-      },
-      {
-        "name": "_gasPrice",
-        "type": "uint256"
-      },
-      {
-        "name": "_maxPerTxHomeDailyLimitHomeMaxPerTxArray",
-        "type": "uint256[]"
-      },
-      {
-        "name": "_owner",
-        "type": "address"
-      },
-      {
-        "name": "_decimalShift",
-        "type": "uint256"
-      }
-    ],
-    "name": "initialize",
-    "outputs": [
-      {
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "getBridgeMode",
-    "outputs": [
-      {
-        "name": "_data",
-        "type": "bytes4"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_token",
-        "type": "address"
-      },
-      {
-        "name": "_to",
-        "type": "address"
-      }
-    ],
-    "name": "claimTokens",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
   }
 ]
